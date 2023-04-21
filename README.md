@@ -124,4 +124,3 @@ docker-compose down
 ```
 
 
-# cc_mini-project-4
