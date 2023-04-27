@@ -145,17 +145,25 @@ def index():
             else:
                         result = exponent(number_1, number_2)       
         elif operation == 'gcd':
+            if number_2 == 0:
+                  result = '0'
+            
             result = gcd(number_1, number_2)
         elif operation == 'lcm':
-            if (number_1>number_2):
-                        result = lcm(number_2, number_1)
+            if (number_1 == 0 or number_2 == 0):
+                result = 0
+                flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')                      
+            # else:
+            #     if (number_1 > number_2):
+            #         result = lcm(number_2, number_1)
             else:
-                        result = lcm(number_1, number_2)                        
-        flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
+                result = lcm(number_1, number_2)                        
+                flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
+        
 
         return render_template('index.html')
     except:
-        flash(f'No input value')
+        flash(f'Wrong input value')
         return render_template('index.html')
 
 
